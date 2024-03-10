@@ -1,28 +1,36 @@
 #include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
 using namespace std;
+using namespace __gnu_pbds;
 #define ll long long
+#define vl vector<long long>
+#define vs vector<string>
 #define pb push_back
-#define len(v) (int)v.size() 
-#define all(v) v.begin(),v.end()
-#define rall(v) v.rbegin(),v.rend()
+#define f(i, a, b) for (ll i = a; i < b; i++)
+#define len(v) (int)v.size()
+#define all(v) v.begin(), v.end()
+#define rall(v) v.rbegin(), v.rend()
+#define fs(i, a, b) for (ll i = a; i < b; i++)
 #ifdef Raptor
 #include "debug.h"
 #else
 #define debug(...) 1
 #define imie(...) 1;
+#define endl '\n'
+typedef __gnu_pbds::tree<int, __gnu_pbds::null_type, less<int>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update> ordered_set;
 #endif
- 
+
 void solve(){
-	
+  
 }
 
-int main(){
-	ios::sync_with_stdio(false);
-	int T;
-	cin>>T;
-	while(T--){
-		solve();
-	}
-	
-	return 0;
+int main() {
+    ios::sync_with_stdio(false);
+    int T;
+    cin >> T;
+    while (T--) {
+        solve();
+    }
+    return 0;
 }
