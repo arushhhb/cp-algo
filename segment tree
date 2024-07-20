@@ -1,0 +1,52 @@
+class SegmentTree{
+  private:
+  vl tree,data;
+  ll n;
+  void build (ll node,ll start,ll end){
+    if(start==end) tree[node]=data[start];
+    else {
+      ll mid=(start+end)/2;
+      ll leftChild=2*node+1;
+      ll rightChild=2*node+2;
+      build(leftChild,start,mid);
+      build(rightChild,mid+1,end);
+      tree[node]=tree[leftChild]+tree[rightChild];
+    }
+  }
+  void update(ll node,ll start,ll end, ll idx, ll val){
+    if(start==end){
+      data[idx]=val;
+      tree[node]=val;
+    }else {
+      ll mid=(start+end)/2;
+      ll leftChild=2*node+1;
+      ll rightChild=2*node+2;
+      if(start<=idx&&idx<=mid) update(leftChild,start,mid,idx,val);
+      else update(rightChild,mid+1,end,idx,val);
+      tree[node]=tree[leftChild]+tree[rightChild];
+    }  
+  }
+  ll query(ll node,ll start,ll end, ll L,ll R){
+    if(R<start||end<L) return 0;
+    if(L<=start&&end<=R) return tree[node];
+    ll mid=(start+end)/2;
+    ll leftChild=2*node+1;
+    ll rightChild=2*node+2;
+    ll sumLeft=query(leftChild,start,mid,L,R);
+    ll sumRight=query(rightChild,mid+1,end,L,R);
+    return sumRight+sumLeft;
+  }
+  public:
+  SegmentTree(vl &arr){
+    data=arr;
+    n=data.size();
+    tree.resize(4*n);
+    build(0,0,n-1);
+  }
+  void update(ll idx,ll val){
+    update(0,0,n-1,idx,val);
+  }
+  ll query(ll L,ll R){
+    return query(0,0,n-1,L,R-1);
+  }
+};
