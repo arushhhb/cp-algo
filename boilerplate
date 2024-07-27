@@ -15,7 +15,6 @@ using namespace std;
 #define len(v) (ll)v.size()
 #define all(v) v.begin(), v.end()
 const ll mod = 1e9 + 7;
-const int N = 1e5 + 10;
 
 void solve() {
     
